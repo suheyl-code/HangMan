@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +8,21 @@ public class GameController : MonoBehaviour
 {
     public Text timeField;
     public Text wordToFindField;
+    public GameObject[] hangMan;
+    public GameObject winText;
+    public GameObject loseText;
     private float time;
-    private string[] wordsLocal = { "mira", "sam", "suheyl", "robert", "john", "james", "mary jane" };
+    //private string[] wordsLocal = { "mira", "sam", "suheyl", "robert", "john", "james", "mary jane" };
+    private string[] words = File.ReadAllLines(@"Assets/Words.txt");
     private string chosenWord;
     private string hiddenWord;
+    private int fails;
+    private bool isGameEnd = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        chosenWord = wordsLocal[Random.Range(0, wordsLocal.Length)];
+        chosenWord = words[Random.Range(0, words.Length)];
 
         for (int i = 0; i < chosenWord.Length; i++)
         {
@@ -35,8 +42,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        timeField.text = time.ToString();
+        if(!isGameEnd)
+        {
+            time += Time.deltaTime;
+            timeField.text = time.ToString();
+        }
 
     }
 
@@ -46,8 +56,8 @@ public class GameController : MonoBehaviour
         if(e.type == EventType.KeyDown && e.keyCode.ToString().Length == 1)
         {
             string pressedLetter = e.keyCode.ToString().ToLower();
-            
-            if(chosenWord.Contains(pressedLetter))
+            //fails = 0;
+            if (chosenWord.Contains(pressedLetter))
             {
                 int index = chosenWord.IndexOf(pressedLetter);
                 while(index != -1)
@@ -58,11 +68,27 @@ public class GameController : MonoBehaviour
                 }
                 wordToFindField.text = hiddenWord;
             }
+            // Adding hangman body parts
+            else
+            {
+                hangMan[fails].SetActive(true);
+                fails++;
+            }
 
-        }
-        else
-        {
+            // in case of losing game
+            if(fails == hangMan.Length)
+            {
+                loseText.SetActive(true);
+                isGameEnd = true;
+            }
 
+            // in case of winning game
+            if(!hiddenWord.Contains("-"))
+            {
+                winText.SetActive(true);
+                isGameEnd = true;
+            }
         }
+        
     }
 }

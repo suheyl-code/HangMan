@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &191453407
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &439728291
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &548855763
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Lose
+  m_Text: You Lost!
 --- !u!222 &990132680
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1032398379
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1257422668
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1603,6 +1603,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeField: {fileID: 967107509}
   wordToFindField: {fileID: 292037787}
+  hangMan:
+  - {fileID: 1257422667}
+  - {fileID: 1032398378}
+  - {fileID: 191453406}
+  - {fileID: 548855762}
+  - {fileID: 439728290}
+  - {fileID: 1666427507}
+  winText: {fileID: 2010171922}
+  loseText: {fileID: 990132677}
 --- !u!4 &1519539605
 Transform:
   m_ObjectHideFlags: 0
@@ -1827,7 +1836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1666427508
 MeshCollider:
   m_ObjectHideFlags: 0
